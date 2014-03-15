@@ -1,0 +1,278 @@
+
+
+
+SQL-transaction
+	funktion
+	gå igenom alla filer
+
+
+Kommentarsfält i EditArticle om vad som är uppdaterat.
+
+reservlista 
+	möjlighet att intresseanmäla innan anmälan påbörjas?
+	max antal deltagare
+	kicka deltagare
+
+Verifiera Email som en TODO
+
+*********************************************
+EditArticle, din artikel börjar se väldigt lång ut, det är rekommenderat att hålla dem till mindre än X tecken.
+
+
+Remember me, login cookie
+
+Betalningar (inget paypal än så länge)
+	Pris
+	Gruppriser
+		välj högst/lägsta(med eller utan grundpriset) OR läggihop alla gruppriser (de kan då ha negativa värden, kökspersonalen får rabatt)
+	Registera betalning
+	Registrera betalningslöfte
+	Betalningsdatum (ett eller flera) Sioså måste va betalat då
+
+
+
+max antal deltagare
+	
+
+vad krävs för att få säkra sin plats
+	få roll godkänd
+	betala (summa)
+
+Edit CSS
+	button -> create css-copy
+	edit
+	Arr
+	Gruppadmin?
+
+Ramar runt bilder
+
+bilder width-height, fixbart för användaren
+
+*********************************************
+Page Home (LarpArticle)
+Page Grupper
+Page Artiklar
+Page Roller
+Page ViewGroup
+Page TODO -> My Page?
+Page Notifications	
+Page ConfigureLarp	
+Page JoinLarp
+
+EditArticle gör inte om [G[0]] till länk
+
+Versionsnummer på artiklar
+
+Delete Grupper/Artiklar/Roller
+
+Länk till huvudsidan
+
+Jag loggar på med FB-knappen, och om jag sedan försöker ändra mina inställningar så måste jag ge ett password som jag ju inte har då jag loggade på med FB... Gissar att du måste känna av vilken typ av användare det är...
+
+SQL-inject
+	funktion
+	måste gå igenom allt?
+
+
+Det finns ingen möjlighet att säga att jag vill spela en roll genom att redigera den.
+
+Uppgradera till arrangör -> Arrangör
+
+När jag trycker på knappen "skapa roll" uppdateras sidan, men den nya rollen syns inte förrän jag går dit en andra gång.
+
+Det visas en länk för att skapa artikel även om jag inte är med i lajvet. Så om jag klickar där blir det ett felmeddelande.
+
+Fyll i Off-formuläret
+	De som känner rollen väl
+
+
+Unicode i ZebraForm
+
+Se över nicEdit (byt ut?)
+
+Long-poll på forum
+	nya trådar
+	nya meddelanden
+	hur blir det med notifications? hur borde det bli?
+
+
+Group->UpdateMember($member_type, $member_id, $status)	
+	notifications
+	styr om kod
+
+
+Group->UpdateArticle($article_id, $group_id, $status(N/Pri/pub), $read, $edit)	
+	notifications
+	styr om kod
+
+
+Character->UpdateKnower($knower_type, $knower_id, $status)	
+	
+	
+
+styr upp TODOn med allt som kan göras
+	markera resten som WIP
+
+Godkänn roller
+	bara om confat så
+	nya ikoner i länken
+	Preview
+	ViewCharacter
+
+Styr upp Scrollens layout
+	Lajvnamn - tagline - datum - område
+	Login
+
+Huvudarr -> redigera vem som är arr
+	notification
+		du blev/blev av med
+		alla andra arrangörer		
+
+
+lajvflaggor:
+	roller behöver godkännas
+	Datum-tid på området
+	Datum-tid game on
+	Datum-tid game off
+	Tagline
+
+Arrangörsläge
+	Knapp i menyn
+	Färgmarkera
+	Fixa:
+		Groups->GetAll()
+		Characters->GetAll()
+		Articles->GetAll()
+		Group()
+		Character()
+		Article()
+
+BUGG: Notifications ska va lajvspecifika
+
+Notification: En artikel har lagts till till gruppen X som du är med i. Go read! (thread_notifications? user_follows_thread? nej!nej! lämna oläst, upp till användaren att följa)
+	OBS Group->GetMembers ger inte alla user_id's som skulle behövas
+
+Notification: En artikel har flaggats så du bör/måste läsa den.
+
+
+gruppflaggor: 
+	IN/OFF endast users/characters kan gå med
+	får medlemmar lägga till artiklar (annars bara admins)
+	får medlemmar redigera läsflaggor (annars bara admins)	
+	inträdesgodkännande
+
+BUGG? Om du går med i en grupp som har artiklar som har forumtrådar. 
+	Du kommer inte får någon thread_notification. Då kommer de meddelandena aldrig bli blå
+	Om du däremot unfollowar e tråd finns notificationen kvar och meddelandena blir båa (fast du får ingen notification)
+		Ologiskt, yes? 
+
+BUGG: Preview av användare i forum
+
+Forum för user/user. 
+	Notifications, alltid
+	Inte med dig själv
+
+Tooltip/preview på alla RenderXLink()
+	WIP
+
+RenderXLink med rättigheter. "Okänd Användare"
+
+Redigera användare. 
+	allergier
+	conf: skicka notifications via mail
+
+
+BUGG Tidsformateringen. Trådar funkar, meddelanden funkar inte.
+	kolla alla elements varje sekund, inte bara i Start()	
+	[T[]]?	
+	
+BUGG! Om du redigerar rollformuläret kommer alla form_field.id uppdateras och form_field_filling.field_id stämmer inte längre.
+	Byt ut field_type-dropdownen mot "Kan inte ändra"
+	Hiddenfält med id-nummer
+
+	
+
+
+user_user_relation
+	user1_id, user2_id, article_id
+	skapa ny rad på första besöket till ViewUser och LoggedIn()
+	Forumtrådar i tom artikel (article_content behövs inte)
+	bool till RenderForum(UserUser)	
+		Visa ingen kontext-väljare
+		Ny text i "Skapa ny tråd..."??
+
+PermissionsForm request-text på allt
+	
+g_user_in_group.request
+g_character_in_group.request
+g_group_in_group.request
+	edit group->permissionsform->sätt till request	
+	join group, become admin. button in group
+	leave group (no notifications, just do eet)
+	select all members
+	select all groups
+	notifications till
+		grupp som user vill gå med i	
+		grupp som character vill gå med i		
+		gruppadmin för gruppen som tar emot join-requests av grupp			
+		user som blivit inbjuden
+		character som blivit inbjuden
+		gruppadmin för gruppen som blivit inbjuden
+		resultat notification
+
+
+article_in_group.request
+	edit article->permissions form
+	select all articles
+	notification till grupp-admins
+	notification om godkännande
+
+Hemliga roller
+	Access per grupp och roll
+		KNOW_OF
+		KNOW_WELL
+
+Inte inloggad - bort med "jag har läst"
+
+Redigera artikel, lägg inte diffade texten i editrutan
+
+Artiklar - interna länkar med RenderLink
+	[U[10]] -> user/användare 10
+	[G[3]] -> grupp 3
+	[R[3]] -> roll 3
+	[A[3]] -> artikel 3
+
+Forum - inte inloggad - bort med textrutorna
+
+Ta bort 'secret' från grupper. 
+	Checkboxen i create-formuläret betyder om group_status_in_group: "Alla" KNOW_OF group_id
+
+BUGG Redigera medlemslistan verkar knas
+
+Inte inloggad, Home-artikeln
+Main larp article. "Du har inte tillgång"
+
+Redigera formulär. ett in, ett off per lajv.
+
+Articklar - bilder 
+
+Formaterade tider
+	"en timma sen"
+
+Artiklar i gruppen 0 syns från alla lajv
+
+
+Splitta Home i vettiga kapitel och länka till alla från Scrollen
+
+Skapa användare -> gå med i HS //FULKÅD
+
+Artickel-forumtråd. Kontext. Alla eller en specifik grupp som kan se artickeln. Dropdown.
+
+Snygg diff
+
+snygga upp flash messages med sessionsvariabler
+	Samma för redirects?
+
+Redigera medlemmar i en grupp. Visa inte alla grupper, bara de jag vet om
+
+Notifications. UserFollowsThread -> skicka notifications á la FB

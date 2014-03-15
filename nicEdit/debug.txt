@@ -1,0 +1,12 @@
+Array
+(
+    [image] => Array
+        (
+            [name] => check_green.png
+            [type] => image/png
+            [tmp_name] => /tmp/phpaJ9tNi
+            [error] => 0
+            [size] => 3567
+        )
+
+)
